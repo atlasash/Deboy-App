@@ -61,7 +61,7 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0px auto;
-  background: #e62117;
+  background: #17272B;
 }
 
 .swiper-container.s2{
@@ -117,7 +117,7 @@ body {
   display: inline-block;
   /*width: 160px;*/
   height: 51px;
-  background: #e62117 !important;
+  background: #17272B !important;
   /*background: #222222;*/
   min-width: 33%;
   font-size: 16px;
@@ -166,7 +166,7 @@ body {
 }
 
 .top_tab{
-  background: #e62117 !important;
+  background: #17272B !important;
   color: #FFF;
   height: 51px !important;
   border-radius: 0px !important;
@@ -189,7 +189,7 @@ text-shadow: 1px 1px rgba(0,0,0,0.4) !important;
   box-shadow: inset 0 0px 0px 0px rgba(0,0,0,0.0) !important;
   border-radius: 0px !important;
   color: #FFF !important;
-  /*background-color: #e62117 !important;
+  /*background-color: #17272B !important;
   font-weight: normal !important;*/
 
 }
@@ -628,31 +628,28 @@ ul.menu_vert li a:hover {
 
 
 .module {
-  background: 
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.4)
-    ),
-  url(http://www.atlasash.com/app/mobile/img/Dorondo.jpg);
-  background-size: contain;
-  width: 100%;
+  width: 97%;
   height: 300px;
   position: relative;
   overflow: hidden;
-  margin: 0px;
+  padding: 25px;
+  display: inline-block;
 }
 .module > header {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 20px 10px;
+  padding: 50px 25px;
+  text-align: left;
 }
 .module > header > h1 {
   margin: 0;
   color: white;
   text-shadow: 0 1px 0 black;
+  text-align: left;
+  text-transform: none;
+  font-size:x-large;
 }
 
 
