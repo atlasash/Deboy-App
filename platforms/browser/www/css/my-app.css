@@ -1,4 +1,113 @@
 /* Your app custom files in this file */
+
+/* -- import Roboto Font ---------------------------- */
+@import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
+
+/* BEGIN Thin */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Thin/Roboto-Thin.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Thin/Roboto-Thin.woff?v=2.137") format("woff");
+  font-weight: 100;
+  font-style: normal; }
+/* END Thin */
+/* BEGIN Thin Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/ThinItalic/Roboto-ThinItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/ThinItalic/Roboto-ThinItalic.woff?v=2.137") format("woff");
+  font-weight: 100;
+  font-style: italic; }
+/* END Thin Italic */
+/* BEGIN Light */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Light/Roboto-Light.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Light/Roboto-Light.woff?v=2.137") format("woff");
+  font-weight: 300;
+  font-style: normal; }
+/* END Light */
+/* BEGIN Light Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/LightItalic/Roboto-LightItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/LightItalic/Roboto-LightItalic.woff?v=2.137") format("woff");
+  font-weight: 300;
+  font-style: italic; }
+/* END Light Italic */
+/* BEGIN Regular */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Regular/Roboto-Regular.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Regular/Roboto-Regular.woff?v=2.137") format("woff");
+  font-weight: 400;
+  font-style: normal; }
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Regular/Roboto-Regular.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Regular/Roboto-Regular.woff?v=2.137") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+/* END Regular */
+/* BEGIN Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Italic/Roboto-Italic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Italic/Roboto-Italic.woff?v=2.137") format("woff");
+  font-weight: 400;
+  font-style: italic; }
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Italic/Roboto-Italic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Italic/Roboto-Italic.woff?v=2.137") format("woff");
+  font-weight: normal;
+  font-style: italic; }
+/* END Italic */
+/* BEGIN Medium */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Medium/Roboto-Medium.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Medium/Roboto-Medium.woff?v=2.137") format("woff");
+  font-weight: 500;
+  font-style: normal; }
+/* END Medium */
+/* BEGIN Medium Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/MediumItalic/Roboto-MediumItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/MediumItalic/Roboto-MediumItalic.woff?v=2.137") format("woff");
+  font-weight: 500;
+  font-style: italic; }
+/* END Medium Italic */
+/* BEGIN Bold */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Bold/Roboto-Bold.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Bold/Roboto-Bold.woff?v=2.137") format("woff");
+  font-weight: 700;
+  font-style: normal; }
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Bold/Roboto-Bold.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Bold/Roboto-Bold.woff?v=2.137") format("woff");
+  font-weight: bold;
+  font-style: normal; }
+/* END Bold */
+/* BEGIN Bold Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/BoldItalic/Roboto-BoldItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/BoldItalic/Roboto-BoldItalic.woff?v=2.137") format("woff");
+  font-weight: 700;
+  font-style: italic; }
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/BoldItalic/Roboto-BoldItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/BoldItalic/Roboto-BoldItalic.woff?v=2.137") format("woff");
+  font-weight: bold;
+  font-style: italic; }
+/* END Bold Italic */
+/* BEGIN Black */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Black/Roboto-Black.woff2?v=2.137") format("woff2"), url("../fonts/roboto/Black/Roboto-Black.woff?v=2.137") format("woff");
+  font-weight: 900;
+  font-style: normal; }
+/* END Black */
+/* BEGIN Black Italic */
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/BlackItalic/Roboto-BlackItalic.woff2?v=2.137") format("woff2"), url("../fonts/roboto/BlackItalic/Roboto-BlackItalic.woff?v=2.137") format("woff");
+  font-weight: 900;
+  font-style: italic; }
+/* END Black Italic */
+
 /* Tab bar icons */
 i.tabbar-demo-icon-1 {
   width: 30px;
@@ -61,11 +170,19 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0px auto;
+  background: #FFFFFF;
 }
 
 .swiper-container.s2{
-  position: absolute;
-  top: 0px;
+   position: absolute;
+   top: 0px;
+   padding-top: 0px;
+   width: 100%;
+   height: 100vh;
+   margin: 0px auto;
+ }
+
+#sticky_frame{
   padding-top: 0px;
   width: 100%;
   height: 100vh;
@@ -77,10 +194,10 @@ body {
   top: 51px;
   padding-top: 0px;
   width: 100%;
-  //height: 2000px;
+  /*height: 2000px;*/
   height: 100vh;
   margin: 0px auto;
-  //margin: 20px auto;
+  /*margin: 20px auto;*/
 }
 
 .swiper-container.s4{
@@ -92,6 +209,7 @@ body {
   margin: 0px auto;
   display:none;
 }
+
 
 
 .menu-container ul {
@@ -108,13 +226,13 @@ body {
   display: inline-block;
   /*width: 160px;*/
   height: 51px;
-  background: #e62117 !important;
+  background: #FFFFFF !important;
   /*background: #222222;*/
   min-width: 33%;
   font-size: 16px;
   text-align: center;
   line-height: 51px;
-  color: #fff;
+  color: #000;
   text-transform: uppercase;
   position: relative;
   overflow-y: hidden;
@@ -135,7 +253,7 @@ body {
   bottom: 0px;
   left: 0; 
   height: 2px;
-  background: #fff !important;
+  background: #000 !important;
   transition: all 0.3s;
 }
 
@@ -157,17 +275,18 @@ body {
 }
 
 .top_tab{
-  background: #e62117 !important;
-  color: #FFF;
+  background: #FFFFFF !important;
+  color: #000;
   height: 51px !important;
   border-radius: 0px !important;
   z-index: 9;
+  width: 100%;
 }
 
 
 .menu-container ul li span{
  font-weight: normal ;
-text-shadow: 1px 1px rgba(0,0,0,0.4) !important;
+  /*text-shadow: 1px 1px rgba(0,0,0,0.4) !important;*/
   opacity: 0.5;
   overflow-y: hidden;
   vertical-align: middle !important;
@@ -179,8 +298,8 @@ text-shadow: 1px 1px rgba(0,0,0,0.4) !important;
   box-shadow: 0 0px 0px 0px   rgba(0,0,0,0.0) !important;
   box-shadow: inset 0 0px 0px 0px rgba(0,0,0,0.0) !important;
   border-radius: 0px !important;
-  color: #FFF !important;
-  /*background-color: #e62117 !important;
+  color: #000 !important;
+  /*background-color: #000000 !important;
   font-weight: normal !important;*/
 
 }
@@ -619,38 +738,34 @@ ul.menu_vert li a:hover {
 
 
 .module {
-  background: 
-    linear-gradient(
-      to bottom,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.4)
-    ),
-  url(http://www.atlasash.com/app/mobile/img/Dorondo.jpg);
-  background-size: contain;
   width: 100%;
-  height: 300px;
+  height: 325px;
   position: relative;
   overflow: hidden;
-  margin: 0px;
+  padding: 25px;
+  display: inline-block;
 }
 .module > header {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 20px 10px;
+  padding: 50px 25px;
+  text-align: left;
 }
 .module > header > h1 {
   margin: 0;
   color: white;
-  text-shadow: 0 1px 0 black;
+  /*text-shadow: 0 0px 0 black;*/
+  text-align: left;
+  text-transform: none;
+  font-size:x-large;
+  font-family: Roboto;font-weight: 200;
+  white-space: normal;
 }
 
 
 
-
-      /* -- import Roboto Font ---------------------------- */
-      @import "https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic&subset=latin,cyrillic";
       /* -- import Material Icons Font -------------------- */
       @font-face {
         font-family: 'Material Design Iconic Font';
@@ -1012,7 +1127,7 @@ ul.menu_vert li a:hover {
         width: 100%;
       }
       .sidebar .sidebar-nav li a {
-        font-size: medium;
+        font-size: small;
         width: 100%;
         position: relative;
         cursor: pointer;
@@ -1024,6 +1139,7 @@ ul.menu_vert li a:hover {
         padding-left: 16px;
         padding-right: 56px;
         text-decoration: none;
+        text-transform: none;
         clear: both;
         font-weight: 500;
         overflow: hidden;
