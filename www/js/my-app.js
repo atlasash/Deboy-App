@@ -350,7 +350,7 @@ var delta = 200;
 $(window).resize(function() {
 
     //to initialize main swiper
-    swiper.slideTo(0);
+    swiper5.slideTo(0);
     $(".myslider").css({
         transition: "all 0.3s",
         width: $(".menu-container ul li").eq(swiper2.activeIndex).width() + "px" ,
@@ -370,7 +370,7 @@ function resizeend() {
     } else {
         timeout = false;
         //to reinitialize main swiper
-        swiper.slideTo(1);
+        swiper5.slideTo(1);
     }
 }
 
@@ -439,6 +439,91 @@ var swiper8 = myApp.swiper('.s8', { /* Options here */
     }//end onProgress
 });
 
+var swiper5 = myApp.swiper('.s5', { /* Options here */
+    initialSlide: 0,
+    slidesPerView: 'auto',
+    noSwipingClass: 'stop-swiping5',
+    watchSlidesProgress : true,
+    speed: 300,
+    onProgress: function(swiper5, progress){
+
+        //$("#tracker").html(swiper.slides[2].progress);
+        if(swiper5.slides[0].progress < 0){
+            state = '0';
+            swiper5.params.followFinger = false;
+            swiper5.params.watchSlidesProgress = false;
+            slide_to_menu(0);
+        }
+
+        if(swiper5.slides[1].progress > 0){
+            state = '1';
+            swiper5.params.followFinger = false;
+            swiper5.params.watchSlidesProgress = false;
+            slide_to_menu(1);
+        }
+
+        if(state == '0'){
+            /*for (var i = 0; i < swiper2.slides.length; i++){
+             swiper2.slides[i].style.opacity = 0.25+0.75*swiper.slides[0].progress;
+             }
+             swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
+            //var opa = 0.25+0.75*swiper.slides[0].progress;
+            $(".overlay").show();
+            var opa = 0.5-0.5*swiper5.slides[0].progress;
+            $(".overlay").css('opacity', opa);
+
+            /********* ROTATE MENU ************/
+            var menu_icon = document.getElementById('menu_icon');
+            es = menu_icon.style;
+            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
+
+            if(clone_set < 1){
+                var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
+                var clone_menu = '<div class="menu-clone"><ul><li class="button"><span>RECENT</span></li><li class="button"><span >HIP-HOP</span></li><li class="button"><span ><i class="fa fa-user" aria-hidden="true" style="font-size: x-large;color:#000"></i></span></li> <li class="myslider"></li> </ul></div>';
+                $(".clone-slide").html(clone_menu+clone_text);
+                var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
+                $(".clone-wrapper").show();
+                $(".clone-slide").scrollTop(s);
+                clone_set=1;
+            }
+
+            $(".slide_main_wrapper").css('opacity', '0');
+            $(".slide_main_wrapper2").css('opacity', '0');
+        }
+        if(state == '1'){
+            /*for (var j = 0; j < swiper2.slides.length; j++){
+             swiper2.slides[j].style.opacity = 0.25+0.75*swiper.slides[0].progress;
+             }
+             swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
+            //var opa = 0.25+0.75*swiper.slides[0].progress;
+            $(".overlay").show();
+            var opa = 0.5-0.5*swiper5.slides[0].progress;
+            $(".overlay").css('opacity', opa);
+
+            /********* ROTATE MENU ************/
+            var menu_icon = document.getElementById('menu_icon');
+            es = menu_icon.style;
+            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
+
+            if(clone_set < 1){
+                var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
+                var clone_menu = '<div class="menu-clone"><ul><li class="button"><span>RECENT</span></li><li class="button"><span >HIP-HOP</span></li><li class="button"><span ><i class="fa fa-user" aria-hidden="true" style="font-size: x-large;color:#000"></i></span></li> <li class="myslider"></li> </ul></div>';
+                $(".clone-slide").html(clone_menu+clone_text);
+                var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
+                $(".clone-wrapper").show();
+                $(".clone-slide").scrollTop(s);
+                clone_set=1;
+            }
+
+            $(".slide_main_wrapper").css('opacity', '0');
+            $(".slide_main_wrapper2").css('opacity', '0');
+            //$(".tabs").css('z-index', '0');
+            $(".menu-container").css('z-index', '1');
+        }
+
+    }
+});
+
 
 $('#btn1').click(function(){
     //swiper8.setWrapperTranslate(-500);
@@ -453,7 +538,8 @@ var swiper4 = myApp.swiper('.s4', { /* Options here */
 
 //MAIN DISPLAY SWIPER CLONE
 var swiper3 = myApp.swiper('.s3', { /* Options here */
-    initialSlide: 0
+    initialSlide: 0,
+    direction: 'vertical',
 });
 
 var tabs_count = 3; //put number of tabs here
@@ -543,90 +629,20 @@ var swiper2 = myApp.swiper('.s2', { /* Options here */
     }//end onProgress
 });
 
+var swiper6 = myApp.swiper('.s6', { /* Options here */
+    watchSlidesProgress : false,
+    speed: 300,
+    initialSlide: 0,
+    noSwipingClass: 'stop-swiping6',
+    resistanceRatio: .00000000000001
+});
+
 //MAIN DISPLAY SWIPER CONTAINER
 var swiper = myApp.swiper('.s1',{
-
-    watchSlidesProgress : true,
-    slidesPerView: 'auto',
     speed: 150,
     initialSlide: 0,
     noSwipingClass: 'stop-swiping',
-    onInit: function(swiper){
-        //swiper.slideTo(1);
-    },
-    onProgress: function(swiper, progress){
-
-        //$("#tracker").html(swiper.slides[2].progress);
-        if(swiper.slides[0].progress < 0){
-            state = '0';
-            swiper.params.followFinger = false;
-            swiper.params.watchSlidesProgress = false;
-            slide_to_menu(0);
-        }
-
-        if(swiper.slides[1].progress > 0){
-            state = '1';
-            swiper.params.followFinger = false;
-            swiper.params.watchSlidesProgress = false;
-            slide_to_menu(1);
-        }
-
-        if(state == '0'){
-            /*for (var i = 0; i < swiper2.slides.length; i++){
-             swiper2.slides[i].style.opacity = 0.25+0.75*swiper.slides[0].progress;
-             }
-             swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
-            //var opa = 0.25+0.75*swiper.slides[0].progress;
-            $(".overlay").show();
-            var opa = 0.5-0.5*swiper.slides[0].progress;
-            $(".overlay").css('opacity', opa);
-
-            /********* ROTATE MENU ************/
-            var menu_icon = document.getElementById('menu_icon');
-            es = menu_icon.style;
-            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper.slides[0].progress+'deg)';
-
-            if(clone_set < 1){
-                var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
-                $(".clone-slide").html(clone_text);
-                var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
-                $(".clone-wrapper").show();
-                $(".clone-slide").scrollTop(s);
-                clone_set=1;
-            }
-
-            $(".slide_main_wrapper").css('opacity', '0');
-        }
-        if(state == '1'){
-            /*for (var j = 0; j < swiper2.slides.length; j++){
-             swiper2.slides[j].style.opacity = 0.25+0.75*swiper.slides[0].progress;
-             }
-             swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
-            //var opa = 0.25+0.75*swiper.slides[0].progress;
-            $(".overlay").show();
-            var opa = 0.5-0.5*swiper.slides[0].progress;
-            $(".overlay").css('opacity', opa);
-
-            /********* ROTATE MENU ************/
-            var menu_icon = document.getElementById('menu_icon');
-            es = menu_icon.style;
-            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper.slides[0].progress+'deg)';
-
-            if(clone_set < 1){
-                var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
-                $(".clone-slide").html(clone_text);
-                var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
-                $(".clone-wrapper").show();
-                $(".clone-slide").scrollTop(s);
-                clone_set=1;
-            }
-
-            $(".slide_main_wrapper").css('opacity', '0');
-            //$(".tabs").css('z-index', '0');
-            $(".menu-container").css('z-index', '1');
-        }
-
-    }
+    resistanceRatio: .00000000000001
 });
 
 swiper8.on('onTransitionEnd', function () {
@@ -703,8 +719,8 @@ swiper2.on('onTransitionStart', function (){
 swiper2.on('onTransitionEnd', function () {
 
     $(".s2").removeClass("stop-swiping3");
-    swiper.params.followFinger = true;
-    swiper.params.watchSlidesProgress = true;
+    swiper5.params.followFinger = true;
+    swiper5.params.watchSlidesProgress = true;
     swiper2.params.followFinger = true;
     swiper2.params.watchSlidesProgress = true;
     slide_main_state = swiper2.activeIndex;
@@ -715,32 +731,33 @@ swiper2.on('onTransitionEnd', function () {
     //$("#tab"+slide_main_state).addClass('tabopen');
 });
 
-swiper.once('onTouchStart', function () {
+swiper5.once('onTouchStart', function () {
     disableNext();
 });
 
-swiper.on('onTouchEnd', function () {
-    //alert(swiper.activeIndex);
-    swiper.params.followFinger = true;
-    swiper.params.watchSlidesProgress = true;
-    if(swiper.activeIndex == '0'){
-        swiper.slideTo(0);
+swiper5.on('onTouchEnd', function () {
+    //alert(swiper5.activeIndex);
+    swiper5.params.followFinger = true;
+    swiper5.params.watchSlidesProgress = true;
+    if(swiper5.activeIndex == '0'){
+        swiper5.slideTo(0);
     }
     else{
-        swiper.slideTo(1);
+        swiper5.slideTo(1);
         $(".slide_main_wrapper").css('opacity', '1');
+        $(".slide_main_wrapper2").css('opacity', '1');
     }
 });
 
-swiper.on('onTransitionEnd', function () {
-    //alert(swiper.activeIndex);
+swiper5.on('onTransitionEnd', function () {
+    //alert(swiper5.activeIndex);
     clone_set=0;
-    swiper.params.followFinger = true;
-    swiper.params.watchSlidesProgress = true;
+    swiper5.params.followFinger = true;
+    swiper5.params.watchSlidesProgress = true;
 
-    if(swiper.activeIndex == '0'){
+    if(swiper5.activeIndex == '0'){
         state = "0";
-        $(".slide_main_wrapper").removeClass("stop-swiping");
+        $(".slide_main_wrapper").removeClass("stop-swiping5");
         $(".slide_main_wrapper").addClass("stop-swiping2");
         //$(".tabs").css('z-index', '0');
         $(".menu-container").css('z-index', '1');
@@ -752,7 +769,9 @@ swiper.on('onTransitionEnd', function () {
         $(".clone-wrapper").hide();
         $(".overlay").hide();
         $(".slide_main_wrapper").css('opacity', '1');
+        $(".slide_main_wrapper2").css('opacity', '1');
         $(".slide_main_wrapper").removeClass("stop-swiping2");
+        $(".slide_main_wrapper").addClass("stop-swiping5");
         $(".slide_main_wrapper").addClass("stop-swiping");
         //$(".tabs").css('z-index', '9');
         $(".menu-container").css('z-index', '9');
@@ -767,31 +786,31 @@ function change_state(){
 function disableNext(){
     //setTimeout(function(){
 
-    if(swiper.activeIndex == '1'){
-        //swiper.params.allowSwipeToNext = false;
-        //swiper.params.allowSwipeToPrev = true;
-        swiper.params.followFinger = true;
-        swiper.params.watchSlidesProgress = true;
+    if(swiper5.activeIndex == '1'){
+        //swiper5.params.allowSwipeToNext = false;
+        //swiper5.params.allowSwipeToPrev = true;
+        swiper5.params.followFinger = true;
+        swiper5.params.watchSlidesProgress = true;
         //And reinit
-        swiper.reInit();
+        swiper5.reInit();
     }
-    if(swiper.activeIndex == '2'){
-        swiper.slideTo(1);
-        //swiper.params.allowSwipeToNext = false;
-        //swiper.params.allowSwipeToPrev = true;
-        swiper.params.followFinger = true;
-        swiper.params.watchSlidesProgress = true;
+    if(swiper5.activeIndex == '2'){
+        swiper5.slideTo(1);
+        //swiper5.params.allowSwipeToNext = false;
+        //swiper5.params.allowSwipeToPrev = true;
+        swiper5.params.followFinger = true;
+        swiper5.params.watchSlidesProgress = true;
         //And reinit
-        swiper.reInit();
+        swiper5.reInit();
     }
-    if(swiper.activeIndex == '3'){
-        swiper.slideTo(1);
-        //swiper.params.allowSwipeToNext = false;
-        //swiper.params.allowSwipeToPrev = true;
-        swiper.params.followFinger = true;
-        swiper.params.watchSlidesProgress = true;
+    if(swiper5.activeIndex == '3'){
+        swiper5.slideTo(1);
+        //swiper5.params.allowSwipeToNext = false;
+        //swiper5.params.allowSwipeToPrev = true;
+        swiper5.params.followFinger = true;
+        swiper5.params.watchSlidesProgress = true;
         //And reinit
-        swiper.reInit();
+        swiper5.reInit();
     }
 
     //}, 20);
@@ -800,24 +819,24 @@ function disableNext(){
 function enableNext(){
 
     //setTimeout(function(){
-    //swiper.params.allowSwipeToNext = true;
-    //swiper.params.allowSwipeToPrev = false;
-    swiper.params.followFinger = true;
-    swiper.params.watchSlidesProgress = true;
+    //swiper5.params.allowSwipeToNext = true;
+    //swiper5.params.allowSwipeToPrev = false;
+    swiper5.params.followFinger = true;
+    swiper5.params.watchSlidesProgress = true;
     //And reinit
-    swiper.reInit();
+    swiper5.reInit();
     //}, 20);
 }
 
 function slide_to_menu(slide_num){
-    swiper.params.followFinger = true;
-    swiper.params.watchSlidesProgress = true;
-    swiper.reInit();
+    swiper5.params.followFinger = true;
+    swiper5.params.watchSlidesProgress = true;
+    swiper5.reInit();
 
     /*setTimeout(function(){
      swiper.slideTo(slide);
      }, 350);*/
-    swiper.slideTo(slide);
+    swiper5.slideTo(slide);
 }
 
 function slide_to_main(slide_num){
