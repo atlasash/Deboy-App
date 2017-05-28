@@ -356,6 +356,7 @@ $(window).resize(function() {
         width: $(".menu-container ul li").eq(swiper2.activeIndex).width() + "px" ,
         left: $(".menu-container ul li").eq(swiper2.activeIndex).position().left + "px"
     });
+
     rtime = new Date();
     if (timeout === false) {
         timeout = true;
@@ -479,11 +480,23 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
 
             if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
-                var clone_menu = '<div class="menu-clone"><ul><li class="button"><span>RECENT</span></li><li class="button"><span >HIP-HOP</span></li><li class="button"><span ><i class="fa fa-user" aria-hidden="true" style="font-size: x-large;color:#000"></i></span></li> <li class="myslider"></li> </ul></div>';
-                $(".clone-slide").html(clone_menu+clone_text);
+                var clone_menu = $(".menu-container").html();
+                var clone_tab = $(".top_tab-wrapper").html();
+                $(".clone-slide").html(clone_text);
+                $(".menu-clone").html(clone_menu);
+                $(".clone-top-tab").html(clone_tab);
                 var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
                 $(".clone-wrapper").show();
                 $(".clone-slide").scrollTop(s);
+
+                var clone_offset = $(".top_tab").offset().top + 51;
+
+                $(".clone-wrapper").css({
+                    top: clone_offset + "px"
+                });
+                $(".menu-clone").css({
+                    top: clone_offset + "px"
+                });
                 clone_set=1;
             }
 
@@ -507,11 +520,24 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
 
             if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
-                var clone_menu = '<div class="menu-clone"><ul><li class="button"><span>RECENT</span></li><li class="button"><span >HIP-HOP</span></li><li class="button"><span ><i class="fa fa-user" aria-hidden="true" style="font-size: x-large;color:#000"></i></span></li> <li class="myslider"></li> </ul></div>';
-                $(".clone-slide").html(clone_menu+clone_text);
+                var clone_menu = $(".menu-container").html();
+                var clone_tab = $(".top_tab-wrapper").html();
+                $(".clone-slide").html(clone_text);
+                $(".menu-clone").html(clone_menu);
+                $(".clone-top-tab").html(clone_tab);
                 var s = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
                 $(".clone-wrapper").show();
                 $(".clone-slide").scrollTop(s);
+
+                var clone_offset = $(".top_tab").offset().top + 51;
+
+                $(".clone-wrapper").css({
+                    top: clone_offset + "px"
+                });
+                $(".menu-clone").css({
+                    top: clone_offset + "px"
+                });
+
                 clone_set=1;
             }
 
@@ -777,6 +803,13 @@ swiper5.on('onTransitionEnd', function () {
         $(".menu-container").css('z-index', '9');
         disableNext();
     }
+    var wh = $(window).height();
+    var hwrapper = $(".slide_main_wrapper .swiper-slide-active")[0].scrollHeight;
+    if(hwrapper > wh){
+        $(".s2").addClass("stop-swiping3");
+    }
+    swiper2.reInit();
+    swiper8.reInit();
 });
 
 function change_state(){

@@ -167,7 +167,7 @@ body {
   top: 0px;
   z-index: 10;
   padding-top: 0px;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin: 0px auto;
   background: #FFFFFF;
@@ -177,7 +177,7 @@ body {
    position: absolute;
    top: 0px;
    padding-top: 0px;
-   width: 100%;
+   width: 100vw;
    height: 100vh;
    margin: 0px auto;
  }
@@ -186,14 +186,14 @@ body {
   position: absolute;
   top: 0px;
   padding-top: 0px;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin: 0px auto;
 }
 
 #sticky_frame{
   padding-top: 0px;
-  width: 100%;
+  width: 100vw;
   height: 100vh;
   margin: 0px auto;
 }
