@@ -478,7 +478,7 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
             es = menu_icon.style;
             es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
 
-            if(clone_set < 1){
+            /*if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
                 var clone_menu = $(".menu-container").html();
                 var clone_tab = $(".top_tab-wrapper").html();
@@ -498,10 +498,10 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
                     top: clone_offset + "px"
                 });
                 clone_set=1;
-            }
+            }*/
 
-            $(".slide_main_wrapper").css('opacity', '0');
-            $(".slide_main_wrapper2").css('opacity', '0');
+            //$(".slide_main_wrapper").css('opacity', '0');
+            //$(".slide_main_wrapper2").css('opacity', '0');
         }
         if(state == '1'){
             /*for (var j = 0; j < swiper2.slides.length; j++){
@@ -518,7 +518,7 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
             es = menu_icon.style;
             es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
 
-            if(clone_set < 1){
+            /*if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
                 var clone_menu = $(".menu-container").html();
                 var clone_tab = $(".top_tab-wrapper").html();
@@ -539,10 +539,10 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
                 });
 
                 clone_set=1;
-            }
+            }*/
 
-            $(".slide_main_wrapper").css('opacity', '0');
-            $(".slide_main_wrapper2").css('opacity', '0');
+            //$(".slide_main_wrapper").css('opacity', '0');
+            //$(".slide_main_wrapper2").css('opacity', '0');
             //$(".tabs").css('z-index', '0');
             $(".menu-container").css('z-index', '1');
         }
