@@ -758,20 +758,20 @@ swiper2.on('onTransitionEnd', function () {
 });
 
 swiper5.once('onTouchStart', function () {
-    disableNext();
+    //disableNext();
 });
 
 swiper5.on('onTouchEnd', function () {
     //alert(swiper5.activeIndex);
-    swiper5.params.followFinger = true;
-    swiper5.params.watchSlidesProgress = true;
+    //swiper5.params.followFinger = true;
+    //swiper5.params.watchSlidesProgress = true;
     if(swiper5.activeIndex == '0'){
-        swiper5.slideTo(0);
+        //swiper5.slideTo(0);
     }
     else{
-        swiper5.slideTo(1);
-        $(".slide_main_wrapper").css('opacity', '1');
-        $(".slide_main_wrapper2").css('opacity', '1');
+        //swiper5.slideTo(1);
+        //$(".slide_main_wrapper").css('opacity', '1');
+        //$(".slide_main_wrapper2").css('opacity', '1');
     }
 });
 
