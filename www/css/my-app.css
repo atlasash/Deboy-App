@@ -463,6 +463,7 @@ body {
   display: none; 
 }
 
+
 .ripple {
   width: 0;
   height: 0;
@@ -1058,7 +1059,7 @@ ul.menu_vert li a:hover {
         border-radius: 2px;
       }
       .sidebar::-webkit-scrollbar {
-        width: 5px;
+        width: 10px;
         background-color: #F7F7F7;
       }
       .sidebar::-webkit-scrollbar-thumb {
@@ -1222,11 +1223,14 @@ ul.menu_vert li a:hover {
       }
       .sidebar .sidebar-icon {
         display: inline-block;
-        margin-right: 16px;
+        margin-right: 10px;
         min-width: 40px;
         width: 40px;
         text-align: left;
-        font-size: 20px;
+        font-size: 25px;
+        line-height: 44px;
+        vertical-align: bottom;
+        padding-top: 4px;
       }
       .sidebar .sidebar-icon:before,
       .sidebar .sidebar-icon:after {
@@ -1242,8 +1246,12 @@ ul.menu_vert li a:hover {
         list-style-type: none;
         width: 100%;
       }
+      .sidebar .sidebar-nav li span {
+        line-height: 48px;
+      }
       .sidebar .sidebar-nav li a {
-        font-size: small;
+        font-size: medium;
+        font-weight: 700;
         width: 100%;
         position: relative;
         cursor: pointer;
@@ -1252,8 +1260,8 @@ ul.menu_vert li a:hover {
         height: 48px;
         line-height: 48px;
         padding: 0;
-        padding-left: 16px;
-        padding-right: 56px;
+        padding-left: 15px;
+        padding-right: 35px;
         text-decoration: none;
         text-transform: none;
         clear: both;
