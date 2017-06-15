@@ -153,119 +153,6 @@ $(document).ready(function() {
         go_to_main(whatTab);
     });
 
-    // Hide Header on on scroll down
-    var didScroll;
-    var upscroll;
-    var lastUpscroll;
-    var lastScrollTop = 0;
-    var delta2 = 0;
-    var temp_menu_top = 0;
-    var menuTop = 0;
-    var del2 = 0;
-    menuTop = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
-    //var navbarHeight = $('header').outerHeight();
-
-    $(".slide_main_wrapper .swiper-slide-active").scroll(function(event){
-        didScroll = true;
-        if (didScroll) {
-            hasScrolled();
-            didScroll = false;
-        }
-        //alert("scrolling");
-    });
-
-    /*
-     setInterval(function() {
-     if (didScroll) {
-     hasScrolled();
-     didScroll = false;
-     }
-     }, 50);
-     */
-
-    function hasScrolled() {
-
-        var st = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
-        temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
-        var del = lastScrollTop - st;
-        var sum = temp_menu_top + del;
-        if(sum > 0){ sum=0;}
-        if(sum< - 51){sum=-51;}
-        //var st = $(this).scrollTop();
-        // Make sure they scroll more than delta
-
-        if(Math.abs(lastScrollTop - st) <= delta2)
-         return;
-
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-
-        if(temp_menu_top <= 0 && temp_menu_top >= -51){
-            swiper8.setWrapperTranslate(sum);
-        }
-        /*
-         if(temp_menu_top < -51){
-         swiper8.setWrapperTranslate(-51);
-         }
-         if(temp_menu_top > 0){
-         swiper8.setWrapperTranslate(0);
-         }
-         */
-
-        if (st > lastScrollTop){
-            // Scroll Down
-            upscroll = 0;
-            if(temp_menu_top >= -51)
-            {
-                /*$(".s2").removeClass("stop-swiping3");*/
-            }
-            else{
-                //swiper8.slideTo(1);
-            }
-            //alert("down scroll");
-        }
-        else {
-            // Scroll Up
-            upscroll = 1;
-            if(upscroll == lastUpscroll && temp_menu_top < 0)
-            {
-            }
-            else
-            {
-                /*$(".s2").removeClass("stop-swiping3");*/
-            }
-            //alert("up scroll");
-        }
-
-        lastScrollTop = st;
-        lastUpscroll = upscroll;
-    }
-
-    function hasScrolled_frame(del2) {
-
-        temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
-        var sum = temp_menu_top + del2/5;
-        if(sum > 0){ sum=0;}
-        if(sum< - 51){sum=-51;}
-        //var st = $(this).scrollTop();
-        // Make sure they scroll more than delta
-
-        if(Math.abs(del2) <= delta2)
-         return;
-
-        // If they scrolled down and are past the navbar, add class .nav-up.
-        // This is necessary so you never see what is "behind" the navbar.
-
-        if(temp_menu_top <= 0 && temp_menu_top >= -51){
-            swiper8.setWrapperTranslate(sum);
-        }
-
-    }
-
-    window.addEventListener('message',function(event) {
-        //alert(event.data);
-        hasScrolled_frame(event.data);
-    },false);
 
     /*
      $('.tab').click(function () {
@@ -405,6 +292,209 @@ var slide_main_state = '0';
 var slide_main_state_new ='0';
 var st_active = 0;
 
+
+// Hide Header on on scroll down
+var didScroll;
+var upscroll;
+var lastUpscroll;
+var lastScrollTop = 0;
+var delta2 = 0;
+var temp_menu_top = 0;
+var menuTop = 0;
+var del2 = 0;
+menuTop = $(".slide_main_wrapper .swiper-slide").eq(2).scrollTop();
+//var navbarHeight = $('header').outerHeight();
+
+
+//MAIN DISPLAY SWIPER
+var swiper2 = myApp.swiper('.s2', { /* Options here */
+    slideDuplicateClass : 'my-slide-duplicate',
+    watchSlidesProgress : false,
+    speed: 300,
+    initialSlide: 0,
+    noSwipingClass: 'stop-swiping2',
+    resistanceRatio: .00000000000001,
+    onProgress: function(swiper2, progress){
+
+        //$("#tracker").html(swiper.slides[2].progress);
+        /*if(swiper2.slides[0].progress < 0){
+         state = '1';
+         swiper2.params.followFinger = false;
+         swiper2.params.watchSlidesProgress = false;
+         slide_to_main(0);
+         }
+
+         if(swiper2.slides[4].progress > 0){
+         state = '1';
+         swiper2.params.followFinger = false;
+         swiper2.params.watchSlidesProgress = false;
+         slide_to_main(4);
+         }*/
+
+
+        //var cur_width = $(".menu-container ul li").eq(slide_main_state).width();
+        $(".menu-container ul li span.active").removeClass("active");
+        $(".menu-container ul li.button span").eq(swiper2.activeIndex).addClass("active");
+
+        var cur_width = $(".myslider").width();
+        if(slide_main_state > 0){
+            var prev_width = $(".menu-container ul li").eq(slide_main_state-1).width();
+            var prev_pos = $(".menu-container ul li").eq(slide_main_state-1).position().left ;
+        }
+        else{
+            var prev_width = 0;
+        }
+
+        if(slide_main_state < (tabs_count-1)){
+            var next_width = $(".menu-container ul li").eq(slide_main_state+1).width();
+            var next_pos = $(".menu-container ul li").eq(slide_main_state+1).position().left ;
+        }
+        else{
+            var next_width = 0;
+        }
+
+
+        if(swiper2.slides[slide_main_state].progress < 0 && swiper2.slides[slide_main_state].progress != 1){
+            if(prev_width != 0){
+                var temp_offset = prev_width - cur_width;
+                $(".myslider").css({
+                    //left: howFar + "px"
+                    transition: "all 0s",
+                    width: cur_width + temp_offset*Math.abs(swiper2.slides[slide_main_state].progress) + "px",
+                    left: prev_pos + prev_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) + "px"
+                });
+
+                $('.menu-container').stop().animate({
+                    scrollLeft: prev_pos + prev_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) - 50
+                }, 0);
+
+
+            }
+        }
+        else{
+            if(next_width != 0  && swiper2.slides[slide_main_state].progress != 1  && swiper2.slides[slide_main_state].progress != 0){
+                var temp_offset = next_width - cur_width;
+                $(".myslider").css({
+                    //left: howFar + "px"
+                    transition: "all 0s",
+                    width: cur_width + temp_offset*Math.abs(swiper2.slides[slide_main_state].progress) + "px",
+                    left: next_pos - next_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) + "px"
+                });
+
+                $('.menu-container').stop().animate({
+                    scrollLeft: next_pos - next_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) - 50
+                }, 0);
+
+            }
+        }
+
+
+    }//end onProgress
+});
+
+/*
+ setInterval(function() {
+ if (didScroll) {
+ hasScrolled();
+ didScroll = false;
+ }
+ }, 50);
+ */
+
+function hasScrolled() {
+
+    var st = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
+    temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
+    var del = lastScrollTop - st;
+    var sum = temp_menu_top + del;
+    if(sum > 0){ sum=0;}
+    if(sum< - 51){sum=-51;}
+    //var st = $(this).scrollTop();
+    // Make sure they scroll more than delta
+
+    if(Math.abs(lastScrollTop - st) <= delta2)
+     return;
+
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+
+    if(temp_menu_top <= 0 && temp_menu_top >= -51){
+        swiper8.setWrapperTranslate(sum);
+    }
+    /*
+     if(temp_menu_top < -51){
+     swiper8.setWrapperTranslate(-51);
+     }
+     if(temp_menu_top > 0){
+     swiper8.setWrapperTranslate(0);
+     }
+     */
+
+    if (st > lastScrollTop){
+        // Scroll Down
+        upscroll = 0;
+        if(temp_menu_top >= -51)
+        {
+            /*$(".s2").removeClass("stop-swiping3");*/
+        }
+        else{
+            //swiper8.slideTo(1);
+        }
+        //alert("down scroll");
+    }
+    else {
+        // Scroll Up
+        upscroll = 1;
+        if(upscroll == lastUpscroll && temp_menu_top < 0)
+        {
+        }
+        else
+        {
+            /*$(".s2").removeClass("stop-swiping3");*/
+        }
+        //alert("up scroll");
+    }
+
+    lastScrollTop = st;
+    lastUpscroll = upscroll;
+}
+
+function hasScrolled_frame(del2) {
+
+    temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
+    var sum = temp_menu_top + del2/5;
+    if(sum > 0){ sum=0;}
+    if(sum< - 51){sum=-51;}
+    //var st = $(this).scrollTop();
+    // Make sure they scroll more than delta
+
+    if(Math.abs(del2) <= delta2)
+     return;
+
+    // If they scrolled down and are past the navbar, add class .nav-up.
+    // This is necessary so you never see what is "behind" the navbar.
+
+    if(temp_menu_top <= 0 && temp_menu_top >= -51){
+        swiper8.setWrapperTranslate(sum);
+    }
+
+}
+
+window.addEventListener('message',function(event) {
+    //alert(event.data);
+    hasScrolled_frame(event.data);
+},false);
+
+$(".slide_main_wrapper .swiper-slide").scroll(function(event){
+    didScroll = true;
+    if (didScroll) {
+        hasScrolled();
+        didScroll = false;
+    }
+    //alert("scrolling");
+});
+
+
 //TOP MENU EXTRA
 var swiper8 = myApp.swiper('.s8', { /* Options here */
     initialSlide: 0,
@@ -420,7 +510,7 @@ var swiper8 = myApp.swiper('.s8', { /* Options here */
 
         if(swiper8.slides[0].progress < 0){
             var wh = $(window).height();
-            var hwrapper = $(".slide_main_wrapper .swiper-slide-active")[0].scrollHeight;
+            var hwrapper = $(".slide_main_wrapper .swiper-slide").eq(swiper2.activeIndex).prop("scrollHeight");
             if(hwrapper > wh){
                 //swiper8.params.followFinger = false;
                 //swiper8.params.watchSlidesProgress = false;
@@ -430,7 +520,7 @@ var swiper8 = myApp.swiper('.s8', { /* Options here */
 
         if(swiper8.slides[1].progress > 0){
             var wh = $(window).height();
-            var hwrapper = $(".slide_main_wrapper .swiper-slide-active")[0].scrollHeight;
+            var hwrapper = $(".slide_main_wrapper .swiper-slide").eq(swiper2.activeIndex).prop("scrollHeight");
             if(hwrapper > wh){
                 //swiper8.params.followFinger = false;
                 //swiper8.params.watchSlidesProgress = false;
@@ -582,91 +672,6 @@ var swiper3 = myApp.swiper('.s3', { /* Options here */
 });
 
 var tabs_count = 3; //put number of tabs here
-//MAIN DISPLAY SWIPER
-var swiper2 = myApp.swiper('.s2', { /* Options here */
-    slideDuplicateClass : 'my-slide-duplicate',
-    watchSlidesProgress : false,
-    speed: 300,
-    initialSlide: 0,
-    noSwipingClass: 'stop-swiping2',
-    resistanceRatio: .00000000000001,
-    onProgress: function(swiper2, progress){
-
-        //$("#tracker").html(swiper.slides[2].progress);
-        /*if(swiper2.slides[0].progress < 0){
-         state = '1';
-         swiper2.params.followFinger = false;
-         swiper2.params.watchSlidesProgress = false;
-         slide_to_main(0);
-         }
-
-         if(swiper2.slides[4].progress > 0){
-         state = '1';
-         swiper2.params.followFinger = false;
-         swiper2.params.watchSlidesProgress = false;
-         slide_to_main(4);
-         }*/
-
-
-        //var cur_width = $(".menu-container ul li").eq(slide_main_state).width();
-        $(".menu-container ul li span.active").removeClass("active");
-        $(".menu-container ul li.button span").eq(swiper2.activeIndex).addClass("active");
-
-        var cur_width = $(".myslider").width();
-        if(slide_main_state > 0){
-            var prev_width = $(".menu-container ul li").eq(slide_main_state-1).width();
-            var prev_pos = $(".menu-container ul li").eq(slide_main_state-1).position().left ;
-        }
-        else{
-            var prev_width = 0;
-        }
-
-        if(slide_main_state < (tabs_count-1)){
-            var next_width = $(".menu-container ul li").eq(slide_main_state+1).width();
-            var next_pos = $(".menu-container ul li").eq(slide_main_state+1).position().left ;
-        }
-        else{
-            var next_width = 0;
-        }
-
-
-        if(swiper2.slides[slide_main_state].progress < 0 && swiper2.slides[slide_main_state].progress != 1){
-            if(prev_width != 0){
-                var temp_offset = prev_width - cur_width;
-                $(".myslider").css({
-                    //left: howFar + "px"
-                    transition: "all 0s",
-                    width: cur_width + temp_offset*Math.abs(swiper2.slides[slide_main_state].progress) + "px",
-                    left: prev_pos + prev_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) + "px"
-                });
-
-                $('.menu-container').stop().animate({
-                    scrollLeft: prev_pos + prev_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) - 50
-                }, 0);
-
-
-            }
-        }
-        else{
-            if(next_width != 0  && swiper2.slides[slide_main_state].progress != 1  && swiper2.slides[slide_main_state].progress != 0){
-                var temp_offset = next_width - cur_width;
-                $(".myslider").css({
-                    //left: howFar + "px"
-                    transition: "all 0s",
-                    width: cur_width + temp_offset*Math.abs(swiper2.slides[slide_main_state].progress) + "px",
-                    left: next_pos - next_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) + "px"
-                });
-
-                $('.menu-container').stop().animate({
-                    scrollLeft: next_pos - next_width*(1-Math.abs(swiper2.slides[slide_main_state].progress)) - 50
-                }, 0);
-
-            }
-        }
-
-
-    }//end onProgress
-});
 
 var swiper6 = myApp.swiper('.s6', { /* Options here */
     watchSlidesProgress : false,
@@ -689,7 +694,7 @@ swiper8.on('onTransitionEnd', function () {
     swiper8.params.followFinger = true;
     swiper8.params.watchSlidesProgress = true;
     var wh = $(window).height();
-    var hwrapper = $(".slide_main_wrapper .swiper-slide-active")[0].scrollHeight;
+    var hwrapper = $(".slide_main_wrapper .swiper-slide").eq(swiper2.activeIndex).prop("scrollHeight");
     if(hwrapper > wh){
         $(".s2").addClass("stop-swiping3");
     }
@@ -848,7 +853,7 @@ swiper5.on('onTransitionEnd', function () {
         disableNext();
     }
     var wh = $(window).height();
-    var hwrapper = $(".slide_main_wrapper .swiper-slide-active")[0].scrollHeight;
+    var hwrapper = $(".slide_main_wrapper .swiper-slide").eq(swiper2.activeIndex).prop("scrollHeight");
     if(hwrapper > wh){
         $(".s2").addClass("stop-swiping3");
     }

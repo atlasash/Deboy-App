@@ -1,17 +1,37 @@
 /* Feedify v1.1.2 by Sarah Dayan | https://sarahdayan.github.io/feedify */
+.feedify{
+  width:100%;
+}
+
 .feedify .feedify-item {
   position: relative;
+  margin-bottom: 20px;
+  width:100%;
 }
 .feedify .feedify-item .feedify-item-header {
   z-index: 100;
   transform: translate3d(0, 0, 0);
+  height: 80px;
 }
 .feedify .feedify-item.fixed .feedify-item-header {
-  position: fixed;
+  /*position: fixed;*/
   /*top: 0;*/
+  position: relative;
 }
 .feedify .feedify-item.bottom .feedify-item-header {
-  position: absolute;
+  /*position: absolute;*/
   /*bottom: 0;*/
+  position: relative;
+}
+
+.feedify-item-body img{
+	width:100%;
+}
+
+
+.row{
+	width:100%;
+	margin:0 !important;
+	padding:0 !important;
 }
 
