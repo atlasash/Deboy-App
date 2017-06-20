@@ -406,7 +406,7 @@ function hasScrolled() {
     var st = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
     temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
     var del = lastScrollTop - st;
-    var sum = temp_menu_top + del;
+    var sum = temp_menu_top + del/2;
     if(sum > 0){ sum=0;}
     if(sum< - 51){sum=-51;}
     //var st = $(this).scrollTop();
@@ -551,6 +551,7 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
     speed: 300,
     onProgress: function(swiper5, progress){
 
+        var menu_icon = document.getElementById('menu_icon');
         //$("#tracker").html(swiper.slides[2].progress);
         if(swiper5.slides[0].progress < 0){
             state = '0';
@@ -572,14 +573,12 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
              }
              swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
             //var opa = 0.25+0.75*swiper.slides[0].progress;
+                        /********* ROTATE MENU ************/
+            es = menu_icon.style;
+            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
             $(".overlay").show();
             var opa = 0.5-0.5*swiper5.slides[0].progress;
             $(".overlay").css('opacity', opa);
-
-            /********* ROTATE MENU ************/
-            var menu_icon = document.getElementById('menu_icon');
-            es = menu_icon.style;
-            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
 
             /*if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
@@ -612,14 +611,12 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
              }
              swiper3.slides[0].style.opacity = 0.25+0.75*swiper.slides[0].progress;*/
             //var opa = 0.25+0.75*swiper.slides[0].progress;
+                        /********* ROTATE MENU ************/
+            es = menu_icon.style;
+            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
             $(".overlay").show();
             var opa = 0.5-0.5*swiper5.slides[0].progress;
             $(".overlay").css('opacity', opa);
-
-            /********* ROTATE MENU ************/
-            var menu_icon = document.getElementById('menu_icon');
-            es = menu_icon.style;
-            es.webkitTransform = es.MsTransform = es.msTransform = es.MozTransform = es.OTransform = es.transform = 'rotate('+180*swiper5.slides[0].progress+'deg)';
 
             /*if(clone_set < 1){
                 var clone_text = $(".slide_main_wrapper .swiper-slide-active").html();
@@ -647,7 +644,7 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
             //$(".slide_main_wrapper").css('opacity', '0');
             //$(".slide_main_wrapper2").css('opacity', '0');
             //$(".tabs").css('z-index', '0');
-            $(".menu-container").css('z-index', '1');
+            //$(".menu-container").css('z-index', '1');
         }
 
     }
@@ -708,17 +705,16 @@ swiper2.on('onTouchStart', function () {
     swiper2.params.watchSlidesProgress = true;
 });
 
+
 swiper2.on('onTouchEnd', function () {
 
-    if($(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top > - 26){
+    if($(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top >= -35){
         swiper8.slideTo(0);
     }
     else{
         swiper8.slideTo(1);
     }
 
-    swiper2.params.followFinger = false;
-    swiper2.params.watchSlidesProgress = false;
     if(slide_main_state == "0"){
         $(".myslider").css({
             //left: howFar + "px"
@@ -734,6 +730,9 @@ swiper2.on('onTouchEnd', function () {
             left: $(".menu-container ul li").eq(4).position().left
         });
     }
+
+    //swiper2.params.followFinger = false;
+    //swiper2.params.watchSlidesProgress = false;   
 });
 
 swiper8.on('onTouchMove', function () {
@@ -834,14 +833,14 @@ swiper5.on('onTransitionEnd', function () {
         $(".slide_main_wrapper").removeClass("stop-swiping5");
         $(".slide_main_wrapper").addClass("stop-swiping2");
         //$(".tabs").css('z-index', '0');
-        $(".menu-container").css('z-index', '1');
+        //$(".menu-container").css('z-index', '1');
         enableNext();
 
     }
     else{
         state = '1';
         $(".s7-wrapper").css('z-index', '0');
-        $(".clone-wrapper").hide();
+        //$(".clone-wrapper").hide();
         $(".overlay").hide();
         $(".slide_main_wrapper").css('opacity', '1');
         $(".slide_main_wrapper2").css('opacity', '1');
