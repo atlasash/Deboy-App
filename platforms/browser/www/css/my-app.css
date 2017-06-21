@@ -1177,6 +1177,11 @@ ul.menu_vert li a:hover {
         white-space: nowrap;
         vertical-align: baseline;
       }
+
+      .sidebar-badge.open{
+        font-size: medium;
+        font-weight: 500;
+      }
       .sidebar .sidebar-badge.badge-circle {
         border-radius: 50%;
       }
@@ -1253,8 +1258,8 @@ ul.menu_vert li a:hover {
         /*line-height: 48px;*/
       }
       .sidebar .sidebar-nav li a {
-        font-size: 14px;
-        font-weight: bold !important;
+        font-size: medium;
+        font-weight: 500;
         width: 100%;
         position: relative;
         cursor: pointer;
@@ -1328,6 +1333,10 @@ ul.menu_vert li a:hover {
       .sidebar-default .sidebar-badge {
         color: #ffffff;
         background-color: #bdbdbd;
+      }
+      .sidebar-badge.open{
+        background-color: #fff;
+        color: #000;
       }
       .sidebar-default .sidebar-divider,
       .sidebar-default .sidebar-nav .divider {

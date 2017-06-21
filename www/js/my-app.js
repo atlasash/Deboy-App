@@ -1,7 +1,51 @@
+
+$( document ).on( "mobileinit", function() {
+    $.mobile.loader.prototype.options.disabled = true;
+});
+
+$(document).ready(function() {
+
+    $.mobile.loading( "hide" );
+    $.mobile.loading().hide();
+    // Bind an event to window.onhashchange that, when the hash changes, gets the
+    // hash and adds the class "selected" to any matching nav link.
+    $( window ).hashchange(function() {
+        var hash = location.hash.replace( /^#/, "" );
+
+        // Set the page title based on the hash.
+        //document.title = "The hash is " + ( hash.replace( /^#/, "" ) || "blank" ) + ".";
+
+        if(hash != ''){
+            var tabIndex = $(".menu-container ul li").eq(hash);
+            var whatTab = tabIndex.index();
+
+            $(".myslider").css({
+                //left: howFar + "px"
+                transition: "all 0.3s",
+                width: tabIndex.width() + "px" ,
+                left: tabIndex.position().left + "px"
+            });
+
+            $('.menu-container').stop().animate({
+                scrollLeft: tabIndex.position().left - 50
+            }, 300);
+
+            go_to_main(whatTab);
+        }
+
+    });
+    // Since the event is only triggered when the hash changes, we need to trigger
+    // the event now, to handle the hash the page may have loaded with.
+    //$( window ).hashchange();
+
+});
+
+
 // Sidebar toggle
 //
 // -------------------
 $(document).ready(function() {
+
 
     var overlay = $('.sidebar-overlay');
 
@@ -139,18 +183,16 @@ $(document).ready(function() {
         // Work out how far the slider needs to go
         //var howFar = 160 * whatTab;
 
-        $(".myslider").css({
+        /*$(".myslider").css({
             //left: howFar + "px"
             transition: "all 0.3s",
             width: $(this).width() + "px" ,
             left: $(this).position().left + "px"
         });
-
         $('.menu-container').stop().animate({
             scrollLeft: $(this).position().left - 50
         }, 300);
-
-        go_to_main(whatTab);
+        go_to_main(whatTab);*/
     });
 
 
@@ -406,7 +448,7 @@ function hasScrolled() {
     var st = $(".slide_main_wrapper .swiper-slide-active").scrollTop();
     temp_menu_top = $(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top;
     var del = lastScrollTop - st;
-    var sum = temp_menu_top + del/2;
+    var sum = temp_menu_top + del;
     if(sum > 0){ sum=0;}
     if(sum< - 51){sum=-51;}
     //var st = $(this).scrollTop();
@@ -507,7 +549,6 @@ var swiper8 = myApp.swiper('.s8', { /* Options here */
     onProgress: function(swiper8, progress){
         $("#prog").html(swiper8.slides[0].progress);
         $("#prog2").html(swiper8.slides[1].progress);
-
         if(swiper8.slides[0].progress < 0){
             var wh = $(window).height();
             var hwrapper = $(".slide_main_wrapper .swiper-slide").eq(swiper2.activeIndex).prop("scrollHeight");
@@ -646,7 +687,6 @@ var swiper5 = myApp.swiper('.s5', { /* Options here */
             //$(".tabs").css('z-index', '0');
             //$(".menu-container").css('z-index', '1');
         }
-
     }
 });
 
@@ -708,7 +748,7 @@ swiper2.on('onTouchStart', function () {
 
 swiper2.on('onTouchEnd', function () {
 
-    if($(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top >= -35){
+    if($(".s8 .swiper-wrapper .swiper-slide").eq(0).offset().top >= -25){
         swiper8.slideTo(0);
     }
     else{
@@ -741,22 +781,24 @@ swiper8.on('onTouchMove', function () {
 
 swiper2.on('onTransitionStart', function (){
 
-    $(".myslider").css({
+    location.href='#'+swiper2.activeIndex;
+
+    /*$(".myslider").css({
         //left: howFar + "px"
         transition: "all 0.3s",
         width: $(".menu-container ul li").eq(swiper2.activeIndex).width() + "px" ,
         left: $(".menu-container ul li").eq(swiper2.activeIndex).position().left + "px"
     });
+    $('.menu-container').stop().animate({
+        scrollLeft: $(".menu-container ul li").eq(swiper2.activeIndex).position().left - 50
+    }, 300);*/
     $(".s2").removeClass("stop-swiping3");
     swiper2.params.followFinger = false;
     swiper2.params.watchSlidesProgress = false;
 
-    $('.menu-container').stop().animate({
-        scrollLeft: $(".menu-container ul li").eq(swiper2.activeIndex).position().left - 50
-    }, 300);
-
     $(".menu-container ul li span.active").removeClass("active");
     $(".menu-container ul li.button span").eq(swiper2.activeIndex).addClass("active");
+
 });
 
 swiper7.on('onTransitionEnd', function () {
